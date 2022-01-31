@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class User(db.Model):
+class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
@@ -18,7 +18,7 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-        class Favoritos(db.Model):
+class Favoritos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     nombreFavoritos = db.Column(db.String(30), unique= False, nullable=False)
@@ -33,7 +33,7 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-        class People(db.Model):
+class Personajes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique= True, nullable=False)
     homeworld = db.Column(db.String(30), unique= False, nullable=False)
@@ -50,8 +50,6 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-
-
 class Planetas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(30), unique= True, nullable=False)
@@ -67,8 +65,7 @@ class Planetas(db.Model):
         }
 
 
-
-class Vehicles(db.Model):
+class Vehiculos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique= True, nullable=False)
     crew = db.Column(db.Integer)
